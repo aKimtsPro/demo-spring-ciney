@@ -5,6 +5,7 @@ import be.bstorm.akimts.ciney.models.Plat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -22,11 +23,14 @@ public class PlatController {
     public String displayAll(Model model){
         List<Plat> plats = platRepo.getAll();
         model.addAttribute("plats", plats);
-        return "";
+        return "plat/all";
     }
 
-    public String displayOne(){
+    // GET - http://localhost:8080/plat/{id}
+    @GetMapping("/plat/{id:[0-9]+}")
+    public String displayOne(Model model, @PathVariable("id") long id){
 
+        return null;
     }
 
 }
