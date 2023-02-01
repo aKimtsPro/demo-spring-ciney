@@ -12,9 +12,9 @@ public class PlatFakeDB {
     private final List<Plat> plats = new ArrayList<>();
 
     public PlatFakeDB() {
-        plats.add( new Plat(1, "curry", 12, List.of("lait de coco", "poivron", "curry")) );
-        plats.add( new Plat(2, "quiche", 8, List.of("pate feuilleté", "champignon", "creme")) );
-        plats.add( new Plat(3, "tartiflette", 5, List.of("oignon", "patate", "fromage")) );
+        plats.add( new Plat(1, "curry", 12, List.of("lait de coco", "poivron", "curry"), true) );
+        plats.add( new Plat(2, "quiche", 8, List.of("pate feuilleté", "champignon", "creme"), true) );
+        plats.add( new Plat(3, "tartiflette", 5, List.of("oignon", "patate", "fromage"), false) );
     }
 
     public List<Plat> getAll(){

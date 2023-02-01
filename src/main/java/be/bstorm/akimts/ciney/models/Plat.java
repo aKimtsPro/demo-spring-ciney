@@ -14,4 +14,5 @@ public class Plat {
     private String nom;
     private double prix;
     private List<String> ingredients;
+    private boolean dispo;
 }

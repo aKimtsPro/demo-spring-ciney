@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <h1>Detail du plat</h1>
+
+
+  <div th:object="${plat}">
+    <div>
+      <p>id:</p>
+      <p th:text="*{id}"></p>
+    </div>
+    <div>
+      <p>nom:</p>
+      <p th:text="*{nom}"></p>
+    </div>
+    <div>
+      <p>disponibilité:</p>
+      <p th:text="*{dispo} ? 'disponible' : 'indisponible'"
+         th:style="'color:' + (*{dispo} ? 'green' : 'red')"
+      ></p>
+    </div>
+    <div th:if="*{dispo} && (5 > 4)">
+      <p>prix</p>
+      <p th:text="|*{prix} $|"></p>
+    </div>
+    <div>
+      <p>ingrédients:</p>
+      <ul>
+        <li th:each="ing : *{ingredients}" th:text="${ing}"></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <a th:href="@{ /menu }">retour</a>
+
+</body>
+</html>

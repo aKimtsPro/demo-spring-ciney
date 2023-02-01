@@ -29,8 +29,9 @@ public class PlatController {
     // GET - http://localhost:8080/plat/{id}
     @GetMapping("/plat/{id:[0-9]+}")
     public String displayOne(Model model, @PathVariable("id") long id){
-
-        return null;
+        Plat plat = platRepo.getOne( id );
+        model.addAttribute( "plat", plat );
+        return "plat/one";
     }
 
 }

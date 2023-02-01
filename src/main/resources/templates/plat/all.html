@@ -9,8 +9,11 @@
   <h1>Liste des plats</h1>
 
   <ul>
-    <li th:each="plat : ${plats}" >
-        <span th:text="${plat.nom}"></span> - <span th:text="${plat.prix}"></span>
+    <li th:each="plat : ${plats}">
+        <span th:text="${plat.nom}"></span>
+        -
+        <span th:text="|${plat.prix} $|"></span>
+        <a th:href="@{ /plat/{id} (id=${plat.id}) }">détails</a>
     </li>
   </ul>
 
