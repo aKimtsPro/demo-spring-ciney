@@ -2,6 +2,7 @@ package be.bstorm.akimts.ciney.service.impl;
 
 import be.bstorm.akimts.ciney.models.Plat;
 import be.bstorm.akimts.ciney.models.PlatCreateForm;
+import be.bstorm.akimts.ciney.models.PlatUpdateForm;
 import be.bstorm.akimts.ciney.service.PlatService;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +44,14 @@ public class PlatServiceMock implements PlatService {
                 true
         );
         plats.add( plat );
+    }
+
+    @Override
+    public void update(long id, PlatUpdateForm form) {
+        Plat plat = getOne(id);
+
+        plat.setNom(form.getNom());
+        plat.setPrix(form.getPrix());
+        plat.setDispo(form.isDispo());
     }
 }

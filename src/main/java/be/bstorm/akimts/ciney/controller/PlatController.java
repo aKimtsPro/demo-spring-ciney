@@ -1,5 +1,6 @@
 package be.bstorm.akimts.ciney.controller;
 
+import be.bstorm.akimts.ciney.models.PlatUpdateForm;
 import be.bstorm.akimts.ciney.service.PlatService;
 import be.bstorm.akimts.ciney.service.impl.PlatServiceMock;
 import be.bstorm.akimts.ciney.models.Plat;
@@ -51,6 +52,28 @@ public class PlatController {
     public String processCreateForm(PlatCreateForm form){
         platService.create( form );
         return "redirect:/menu";
+    }
+
+    // TODO continuer le update
+    @GetMapping("/plat/{id:[0-9]+}/update")
+    public String displayUpdateForm(Model model, @PathVariable int id){
+        Plat plat = platService.getOne(id);
+
+        PlatUpdateForm form = new PlatUpdateForm(); // rempli des valeurs du plat
+        form.setNom( plat.getNom() );
+        form.setPrix( plat.getPrix() );
+        form.setDispo( plat.isDispo() );
+
+        model.addAttribute("form", form);
+        model.addAttribute("id", id);
+
+        return "plat/update-form";
+    }
+
+    @PostMapping("/plat/{id:[0-9+]}/update")
+    public String processUpdate(@PathVariable long id,PlatUpdateForm form){
+        platService.update(id, form);
+        return "redirect:/plat/"+id;
     }
 
 }

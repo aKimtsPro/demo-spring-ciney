@@ -1,5 +1,6 @@
 package be.bstorm.akimts.ciney.controller;
 
+import be.bstorm.akimts.ciney.models.GenerateNamesForm;
 import be.bstorm.akimts.ciney.service.NameService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,13 +36,26 @@ public class DemoController {
 //
 //    }
 
+//    @GetMapping("/generate/words")
+//    public String generateNames(
+//            Model model,
+//            @RequestParam(value = "qtt", required = false, defaultValue = "5") int quantity,
+//            @RequestParam(required = false, defaultValue = "5") int length
+//    ){
+//        List<String> names = nameService.generateNames(quantity, length);
+//        model.addAttribute("names", names);
+//        return "display-names";
+//    }
+
+    @GetMapping("/generate/words/form")
+    public String displayGenerateNamesForm(Model model){
+        model.addAttribute( "form", new GenerateNamesForm());
+        return "generate-names-form";
+    }
+
     @GetMapping("/generate/words")
-    public String generateNames(
-            Model model,
-            @RequestParam(value = "qtt", required = false, defaultValue = "5") int quantity,
-            @RequestParam(required = false, defaultValue = "5") int length
-    ){
-        List<String> names = nameService.generateNames(quantity, length);
+    public String generateNames( Model model, GenerateNamesForm form ){
+        List<String> names = nameService.generateNames( form.getQtt(), form.getSize() );
         model.addAttribute("names", names);
         return "display-names";
     }

@@ -24,7 +24,7 @@
          th:style="'color:' + (*{dispo} ? 'green' : 'red')"
       ></p>
     </div>
-    <div th:if="${*{dispo} && true}">
+    <div th:if="*{dispo and true}">
       <p>prix</p>
       <p th:text="|*{prix} $|"></p>
     </div>
